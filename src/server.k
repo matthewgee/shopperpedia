@@ -1,8 +1,15 @@
 express = require('express')
+browserify = require('browserify')
 
 app = express.createServer()
 
 app.use('/', express.static(__dirname + '/../public'))
+
+app.use(browserify({
+    base : __dirname + '/client',
+    mount : '/browserify.js',
+    shim : false
+}));
 
 app.get('/test', (req, res){
   res.send('Test U out');
