@@ -4,3 +4,6 @@
 [submodule "lib/browserify"]
 	path = lib/browserify
 	url = https://github.com/substack/node-browserify.git
+[submodule "lib/connect"]
+	path = lib/connect
+	url = https://github.com/senchalabs/connect.git
