@@ -1,8 +1,8 @@
-new Ext.Application({
+ new Ext.Application({
     name: 'Shopperpedia',
 
-    launch: {
-        @viewport = new Ext.Panel({
+    launch: function() {
+        return this.viewport = new Ext.Panel({
             fullscreen: true,
 
             id     : 'mainPanel',
@@ -71,7 +71,7 @@ new Ext.Application({
 
 new Ext.Application({
     launch: function() {
-        
+
         var formBase = {
             scroll: 'vertical',
             url   : 'postUser.php',
@@ -118,7 +118,7 @@ new Ext.Application({
                 }
             }],
         }
-        
+
         if (Ext.is.Phone) {
             formBase.fullscreen = true;
         } else {
@@ -132,12 +132,12 @@ new Ext.Application({
                 width: 480
             });
         }
-        
+
         form = new Ext.form.FormPanel(formBase);
         form.show();
 
         var carousel1 = new Ext.Carousel();
-        
+
         carousel1.show();
     }
 });

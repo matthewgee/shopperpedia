@@ -2,5 +2,5 @@ Dependencies:
 
 npm install qs
 npm install mime
-npm install connect
+npm install express
 npm install optparse # (for kaffeine)
