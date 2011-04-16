@@ -1,4 +1,6 @@
- new Ext.Application({
+ var $$; $$ = function(id) { return Ext.getCmp(id) }
+
+new Ext.Application({
     name: 'Shopperpedia',
 
     launch: function() {
@@ -9,29 +11,37 @@
             layout : 'card',
             items  : [
                 {
+                    id       : 'welcome_carousel',
                     xtype    : 'carousel',
+                    // disabled : true,
+                    scroll   : false,
                     defaults : {
                         cls : 'card'
                     },
                     items: [
                         {
-                            title: 'Tab 1',
-                            html: 'Card 1'
+                            items: user_signup_form(function() {
+                                return $$('welcome_carousel').next()
+                            })
                         },
                         {
-                            title: 'Tab 2',
-                            html: 'Card 2'
+                            items: user_passion_form(function() {
+                                return $$('welcome_carousel').next()
+                            }, function(action, c) {
+                                return console.log(action, c)
+                            })
                         },
                         {
-                            title: 'Tab 3',
-                            html: 'Card 3'
+                            items: user_ranking_form(function() {
+                                return Ext.Msg.alert('Done', "Thanks, we'll get you started right away!", Ext.emptyFn);
+                            })
                         }
                     ]
                 }
             ]
-        });
+        })
     }
-});
+})
 
 /*
 new Ext.Application({

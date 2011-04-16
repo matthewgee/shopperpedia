@@ -1,37 +1,47 @@
-new Ext.Application({
+$$ = (id) { Ext.getCmp id }
+
+new Ext.Application {
     name: 'Shopperpedia',
 
     launch: {
-        @viewport = new Ext.Panel({
+        @viewport = new Ext.Panel {
             fullscreen: true,
-
+            
             id     : 'mainPanel',
             layout : 'card',
             items  : [
                 {
+                    id       : 'welcome_carousel',
                     xtype    : 'carousel',
+                    // disabled : true,
+                    scroll   : false,
                     defaults : {
                         cls : 'card'
                     },
                     items: [
                         {
-                            title: 'Tab 1',
-                            html: 'Card 1'
+                            items: user_signup_form {
+                                $$('welcome_carousel').next()
+                            }
                         },
                         {
-                            title: 'Tab 2',
-                            html: 'Card 2'
+                            items: user_passion_form {
+                                $$('welcome_carousel').next()
+                            }, (action, c) {
+                                console.log action, c
+                            }
                         },
                         {
-                            title: 'Tab 3',
-                            html: 'Card 3'
+                            items: user_ranking_form {
+                                Ext.Msg.alert('Done', "Thanks, we'll get you started right away!", Ext.emptyFn);
+                            }
                         }
                     ]
                 }
             ]
-        });
+        }
     }
-});
+}
 
 /*
 new Ext.Application({
