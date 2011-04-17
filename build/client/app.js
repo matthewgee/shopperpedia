@@ -55,7 +55,7 @@ new Ext.Application({
                                         direction: 'vertical',
                                         scroll: true,
                                         constrain: true
-                                    });
+                                    })
                                 }
                             }
                         }

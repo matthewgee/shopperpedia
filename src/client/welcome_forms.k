@@ -96,7 +96,7 @@ make_sortable_list = (container_id, dict) {
     // list = {'money':'Save Money', 'ethical':'Avoid Unethical Companies'}
     html = ""
     for name, label in dict {
-        div = "<div class='x-form-label' style='width:60%'><span>" + label + "</span></div>"
+        div = "<div class='x-form-label' style='width:100%'><span>" + label + "</span></div>"
         html += "<li class='x-field' value='" + name + "'>" + div + "</li>"
     }
     

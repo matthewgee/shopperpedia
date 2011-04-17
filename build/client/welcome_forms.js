@@ -96,7 +96,7 @@ make_sortable_list = function(container_id, dict) {
     // list = {'money':'Save Money', 'ethical':'Avoid Unethical Companies'}
     var name, label, html, div, elements, ul; html = ""
     for(name in dict) { label = dict[name];
-        div = "<div class='x-form-label' style='width:60%'><span>" + label + "</span></div>"
+        div = "<div class='x-form-label' style='width:100%'><span>" + label + "</span></div>"
         html += "<li class='x-field' value='" + name + "'>" + div + "</li>"
     }
 
