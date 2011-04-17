@@ -1,0 +1,19 @@
+#rankings {
+    position: relative;
+    width: 100%;
+}
+
+#rankings li {
+/*    height: 40px;
+    line-height: 40px;
+    padding: 0 5px;
+    font-size: 21px;
+*/
+    width: 100%;
+/*    border-bottom: 1px solid #ddd;*/
+    background-color: white;
+}
+
+#rankings li.x-dragging {
+/*    border-top: 1px solid #ddd;*/
+}

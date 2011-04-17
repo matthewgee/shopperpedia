@@ -4,6 +4,9 @@ new Ext.Application {
     name: 'Shopperpedia',
 
     launch: {
+        window.passions = passions = {}
+        window.sortable = sortable = null
+        
         @viewport = new Ext.Panel {
             fullscreen: true,
             
@@ -28,12 +31,32 @@ new Ext.Application {
                             items: user_passion_form {
                                 $$('welcome_carousel').next()
                             }, (action, c) {
-                                console.log action, c
+                                if action == 'check' {
+                                    passions[c.getName()] = c.label
+                                } else {
+                                    delete passions[c.getName()]
+                                }
+                                make_sortable_list('rankings', passions)
                             }
                         },
                         {
                             items: user_ranking_form {
                                 Ext.Msg.alert('Done', "Thanks, we'll get you started right away!", Ext.emptyFn);
+                            },
+                            listeners: {
+                                activate: { 
+                                    // console.log('activate')
+                                    if sortable {
+                                        console.log('destroy')
+                                        sortable.clearListeners()
+                                    }
+                                    sortable = new Ext.util.Sortable 'rankings', {
+                                        itemSelector: 'li',
+                                        direction: 'vertical',
+                                        scroll: true,
+                                        constrain: true
+                                    }
+                                }
                             }
                         }
                     ]

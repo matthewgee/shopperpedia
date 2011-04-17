@@ -4,6 +4,9 @@ new Ext.Application({
     name: 'Shopperpedia',
 
     launch: function() {
+        window.passions = passions = {}
+        window.sortable = sortable = null
+
         return this.viewport = new Ext.Panel({
             fullscreen: true,
 
@@ -28,13 +31,33 @@ new Ext.Application({
                             items: user_passion_form(function() {
                                 return $$('welcome_carousel').next()
                             }, function(action, c) {
-                                return console.log(action, c)
+                                if(action == 'check') {
+                                    passions[c.getName()] = c.label
+                                } else {
+                                    delete(passions[c.getName()])
+                                }
+                                return make_sortable_list('rankings', passions)
                             })
                         },
                         {
                             items: user_ranking_form(function() {
                                 return Ext.Msg.alert('Done', "Thanks, we'll get you started right away!", Ext.emptyFn);
-                            })
+                            }),
+                            listeners: {
+                                activate: function() {
+                                    // console.log('activate')
+                                    var sortable; if(sortable) {
+                                        console.log('destroy')
+                                        sortable.clearListeners()
+                                    }
+                                    return sortable = new Ext.util.Sortable('rankings', {
+                                        itemSelector: 'li',
+                                        direction: 'vertical',
+                                        scroll: true,
+                                        constrain: true
+                                    });
+                                }
+                            }
                         }
                     ]
                 }
