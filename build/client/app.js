@@ -95,7 +95,12 @@ new Ext.Application({
                             },
                             items: [
                                 {
-                                    iconCls: 'add'
+                                    iconCls: 'add',
+                                    handler: function() {
+                                        return Ext.Msg.prompt('Add Item', "Shopping List Item:", function(b, text) {
+                                            return shopping_list.add({sort_order: 10, name: text})
+                                        })
+                                    }
                                 },
                                 {
                                     iconCls: 'settings',
