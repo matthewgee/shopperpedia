@@ -1,4 +1,5 @@
 user_signup_form = (next_action) {
+    // Return a configuration object for the signup form
     {
         fullscreen     : true,
         standardSubmit : false,
@@ -41,6 +42,7 @@ user_signup_form = (next_action) {
 }
 
 user_passion_form = (next_action, check_action) {
+    // Return a configuration object for the user "passions" form
     {
         fullscreen     : true,
         standardSubmit : false,
@@ -92,8 +94,12 @@ user_passion_form = (next_action, check_action) {
     }
 }
 
+// Create an HTML list of items, using a dict of value/description pairs
+// The resulting HTML can then have Ext.util.Sortable applied to it to make it
+// actually sortable in the client.
+//
+// Example 'dict': {'money':'Save Money', 'ethical':'Avoid Unethical Companies'}
 make_sortable_list = (container_id, dict) {
-    // list = {'money':'Save Money', 'ethical':'Avoid Unethical Companies'}
     html = ""
     for name, label in dict {
         div = "<div class='x-form-label' style='width:100%'><span>" + label + "</span></div>"
@@ -106,17 +112,11 @@ make_sortable_list = (container_id, dict) {
     } else {
         ul = elements[0]
         ul.innerHTML = html
-        // new Ext.util.Sortable(ul, {
-        //     itemSelector: 'li',
-        //     direction: 'vertical',
-        //     scroll: true,
-        //     constrain: true
-        // });
-        
     }
 }
 
 user_ranking_form = (next_action) {
+    // Return a configuration object for the ranking form
     {
         fullscreen     : true,
         standardSubmit : false,
