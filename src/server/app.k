@@ -11,7 +11,7 @@ app.get('/test', (req, res){
   res.send('Test U out');
 })
 
-app.listen(8001)
+app.listen(80)
 
 // 
 // 
